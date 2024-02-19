@@ -16,9 +16,7 @@ pipeline {
         // }
         stage('Install depdencies') {
             steps {
-                sh '''
-                echo "dependencies are installed"
-                '''
+                sh 'npm install'
             }
         }
         stage('Unit test') {
@@ -47,21 +45,21 @@ pipeline {
         //install pipeline utility steps plugin, if not installed
         stage('Publish Artifact') {
             steps {
-                // nexusArtifactUploader(
-                //     nexusVersion: 'nexus3',
-                //     protocol: 'http',
-                //     nexusUrl: '172.31.86.20:8081/',
-                //     groupId: 'com.roboshop',
-                //     version: "$packageVersion",
-                //     repository: 'catalogue',
-                //     credentialsId: 'nexus-auth',
-                //     artifacts: [
-                //         [artifactId: 'catalogue',
-                //         classifier: '',
-                //         file: 'catalogue.zip',
-                //         type: 'zip']
-                //     ]
-                //)
+                nexusArtifactUploader(
+                    nexusVersion: 'nexus3',
+                    protocol: 'http',
+                    nexusUrl: '44.211.162.125:8081/',
+                    groupId: 'com.roboshop',
+                    version: "1.0.1",
+                    repository: 'catalogue',
+                    credentialsId: 'nexus-auth',
+                    artifacts: [
+                        [artifactId: 'catalogue',
+                        classifier: '',
+                        file: 'catalogue.zip',
+                        type: 'zip']
+                    ]
+                )
                 echo "Artifacts uploaded to Nexus"
             }
         }
