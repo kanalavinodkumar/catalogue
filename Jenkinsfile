@@ -16,7 +16,7 @@ pipeline {
         // }
         stage('Install depdencies') {
             steps {
-                sh 'npm install'
+                sh 'nvm install'
             }
         }
         stage('Unit test') {
