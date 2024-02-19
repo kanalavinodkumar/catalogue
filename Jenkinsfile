@@ -7,11 +7,11 @@ pipeline {
     stages {
         stage('Get version'){
             steps{
-                script{
-                    def packageJson = readJSON(file: 'package.json')
-                    packageVersion = packageJson.version
-                    echo "version: ${packageVersion}"
-                }
+                // script{
+                //     def packageJson = readJSON(file: 'package.json')
+                //     packageVersion = packageJson.version
+                //     echo "version: ${packageVersion}"
+                // }
             }
         }
         stage('Install depdencies') {
