@@ -5,15 +5,15 @@ pipeline {
         packageVersion = ''
     }
     stages {
-        // stage('Get version'){
-        //     steps{
-        //         script{
-        //             def packageJson = readJSON(file: 'package.json')
-        //             packageVersion = packageJson.version
-        //             echo "version: ${packageVersion}"
-        //         }
-        //     }
-        // }
+        stage('Get version'){
+            steps{
+                script{
+                    def packageJson = readJSON(file: 'package.json')
+                    packageVersion = packageJson.version
+                    echo "version: ${packageVersion}"
+                }
+            }
+        }
         stage('Install depdencies') {
             steps {
                 sh '''
@@ -54,7 +54,7 @@ pipeline {
                     protocol: 'http',
                     nexusUrl: '44.211.162.125:8081/',
                     groupId: 'com.roboshop',
-                    version: "1.0.1",
+                    version: "$packageVersion",
                     repository: 'catalogue',
                     credentialsId: 'nexus-auth',
                     artifacts: [
