@@ -16,7 +16,7 @@ pipeline {
         // }
         stage('Install depdencies') {
             steps {
-                sh ''''
+                sh '''
                 echo "dependencies are installed"
                 '''
             }
